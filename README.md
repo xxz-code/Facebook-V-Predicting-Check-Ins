@@ -14,7 +14,7 @@ output:
 
 ![Cats are cute](https://pixabay.com/get/g7f5c8fe15f32f9093c3aa060b1857cea2ee68b9c9aec4feef526a3ea2ad2a194ae3a5ee61105c4746d03fde47bba7ebf_640.jpg?attachment=)
 
-## Here's some of my repository 
+## Here's some of my repository .
 
 1. [Recurrent Neural Network](https://brandonyph.github.io/Introduction-to-RNN-in-R/)
 2. [Heatmap](https://github.com/brandonyph/Heatmap-Tutorial-in-R)
