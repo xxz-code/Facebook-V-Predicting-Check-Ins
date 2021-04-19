@@ -689,7 +689,8 @@ ggplot(test, aes(x, y )) +
     theme_minimal() +
     scale_color_brewer(palette = "Set1")
 ```
+```r
 ![Image](5.png)
-
+```
 |    The correct predictions are more clustered than the wrong predictions.
 
