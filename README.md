@@ -2,7 +2,7 @@
 ## Table of contents
 1. [Introduction](#introduction)
 2. [Loading Libraries](#paragraph1)
-3. [Data Loading and Cleaningt](#paragraph2)
+3. [Loading and Cleaning Data](#paragraph2)
 4. [Vizualizing the Training Set](#paragraph3)
 5. [K Nearest Neighbor](#paragraph4)
 6. [Random Forest](#paragraph5)
