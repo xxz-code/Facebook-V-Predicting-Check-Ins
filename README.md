@@ -109,7 +109,7 @@ attach(trainz)
 plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode = "markers",
         marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
 ```
- ![Image](newplot(1).png)
+ ![Image](2.1.png)
 
 ```
 ## Warning: `arrange_()` was deprecated in dplyr 0.7.0.
@@ -127,7 +127,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
 plot_ly(x = ~x , y = ~y, z = ~weekday, color = place_id,  type = "scatter3d", mode = "markers", 
         marker=list(size = 5)) %>% layout(title = "Place_id's by position and Day of Week")
 ```
-![Image](newplot(3).png)
+![Image](3.1.png)
 
 
 ```r
