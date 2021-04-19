@@ -89,7 +89,7 @@ ggplot(train, aes(x, y )) +
   ggtitle("Check-ins colored by place_id")
 ```
 ![Image](1.1.png)
-
+```
 |       At first glance, the clusters are very apparent. Even with this Kaggle Notebook's unorthodox approach to dividing and creating a training set, there are still many noticeable regions for place_id.
 |       The plot is a bit muddled, so the additional element of time is added in the following chart to avoid overlap. 
 
