@@ -257,7 +257,8 @@ pred = pred$predictions
 ## [1] 0.577699
 ```
 
-We want to examine what is the best number of mtry so we are going to do an experiment.
+His accuracy rate is 0.577699. We want to examine what is the best number of mtry so we are going to do an experiment.
+
 
 ```r
 for(i in 1:7){
