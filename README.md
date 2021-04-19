@@ -109,7 +109,7 @@ attach(trainz)
 plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode = "markers",
         marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
 ```
-
+![Image](newplot (1).png)
 ```
 ## Warning: `arrange_()` was deprecated in dplyr 0.7.0.
 ## Please use `arrange()` instead.
@@ -126,7 +126,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
 plot_ly(x = ~x , y = ~y, z = ~weekday, color = place_id,  type = "scatter3d", mode = "markers", 
         marker=list(size = 5)) %>% layout(title = "Place_id's by position and Day of Week")
 ```
-
+![Image](newplot (3).png)
 
 ```r
 detach(trainz)
@@ -676,8 +676,7 @@ importance(rf2)
 ```r
 varImpPlot(rf2)
 ```
-![Image of 5](https://github.com/xxz-code/Team-13-Machine-Learning-Presentation-/blob/main/4.png)
-
+![Image](4.png)
 
 X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
 
@@ -690,7 +689,6 @@ ggplot(test, aes(x, y )) +
     theme_minimal() +
     scale_color_brewer(palette = "Set1")
 ```
-![Image of 5](https://github.com/xxz-code/Team-13-Machine-Learning-Presentation-/blob/main/5.png
-![](KNN-and-Random-Forest_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![Image](5.png)
 The correct predictions are more clustered than the wrong predictions.
 
