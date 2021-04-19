@@ -110,6 +110,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
         marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
 ```        
 ![Image](2.1.png)
+![alt text](https://github.com/xxz-code/Image/blob/main/2.1.png?raw=true)
 
 
 
