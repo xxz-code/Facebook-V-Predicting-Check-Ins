@@ -15,59 +15,13 @@ library(data.table) #reading in the data
 library(dplyr) #dataframe manipulation
 library(ggplot2) #viz
 library(ranger) #the random forest implementation
-```
-
-```
-## Warning: package 'ranger' was built under R version 4.0.5
-```
-
-```r
 library(plotly) #3D plotting
-```
-
-```
-## Warning: package 'plotly' was built under R version 4.0.3
-```
-
-```r
 library(tidyr) #dataframe manipulation
 library(FNN) #k nearest neighbors algorithm
-```
-
-```
-## Warning: package 'FNN' was built under R version 4.0.5
-```
-
-```r
 library(xgboost)
-```
-
-```
-## Warning: package 'xgboost' was built under R version 4.0.5
-```
-
-```r
 library(randomForest)
-```
-
-```
-## Warning: package 'randomForest' was built under R version 4.0.4
-```
-
-```r
 library(gbm)
-```
-
-```
-## Warning: package 'gbm' was built under R version 4.0.4
-```
-
-```r
 library(caret)
-```
-
-```
-## Warning: package 'caret' was built under R version 4.0.3
 ```
 
 ## Loading and Cleaning:
@@ -235,15 +189,6 @@ KNN is one of the most used method in the leading submissions, we first run a kn
 ```r
 train$place_id <- as.factor(train$place_id)
 knnfit<-train(place_id~., data=train, method='knn', preProcess=c("center", "scale"))
-```
-
-
-```
-
-```
-## Warning in nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo, :
-## There were missing values in resampled performance measures.
-```
 
 ```r
 knnpred <- predict(knnfit, newdata=test)
