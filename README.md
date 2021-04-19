@@ -1,7 +1,7 @@
 ---
 title: "Facebook V: Predicting Check-Ins"
 author: "Team 13"
-date: "4/19/2021"
+
 output:
   prettydoc::html_pretty:
     theme: cayman
