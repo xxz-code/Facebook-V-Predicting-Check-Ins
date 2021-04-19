@@ -189,7 +189,7 @@ KNN is one of the most used method in the leading submissions, we first run a kn
 ```r
 train$place_id <- as.factor(train$place_id)
 knnfit<-train(place_id~., data=train, method='knn', preProcess=c("center", "scale"))
-
+```
 ```r
 knnpred <- predict(knnfit, newdata=test)
 mean(knnpred==test$place_id)
