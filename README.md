@@ -4,7 +4,6 @@ author: "Team 13"
 output:
   prettydoc::html_pretty:
     theme: cayman
-    highlight: github
     
 ---
 ## Final Project: Comparing the KNN Model to Random Forest 
