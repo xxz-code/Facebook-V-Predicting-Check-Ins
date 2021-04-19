@@ -1,5 +1,5 @@
 
-# Table of contents
+## Table of contents
 1. [Introduction](#introduction)
 2. [Loading Libraries]
 3. [Data Loading and Cleaningt]
