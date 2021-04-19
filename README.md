@@ -1,11 +1,11 @@
 
 ## Table of contents
 1. [Introduction](#introduction)
-2. [Loading Libraries]
-3. [Data Loading and Cleaningt]
-4. [Vizualizing the Training Set](#paragraph1)
-5. [K Nearest Neighbor]
-6. [Random Forest](#paragraph2)
+2. [Loading Libraries](#paragraph1)
+3. [Data Loading and Cleaningt](#paragraph2)
+4. [Vizualizing the Training Set](#paragraph3)
+5. [K Nearest Neighbor](#paragraph4)
+6. [Random Forest](#paragraph5)
 ## Final Project: Comparing the KNN Model to Random Forest 
 
 ## Introduction
