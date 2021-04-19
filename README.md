@@ -691,5 +691,5 @@ ggplot(test, aes(x, y )) +
 ```
 ![Image](5.png)
 ```
-The correct predictions are more clustered than the wrong predictions.
+|    The correct predictions are more clustered than the wrong predictions.
 
