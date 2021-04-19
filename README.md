@@ -299,7 +299,7 @@ for(i in 1:7){
 ## mtry= 7[1] 0.5581911
 ```
 
-mtry = 2 produced the best accuracy 0.5819109, which would put us at 399th on the leaderboard, although we are only sampling a very small portion of the actual training set.
+|       mtry = 2 produced the best accuracy 0.5819109, which would put us at 399th on the leaderboard, although we are only sampling a very small portion of the actual training set.
 
 
 ```r
@@ -312,7 +312,7 @@ importance(rf2)
 ```
 
 ```
-<details>
+
 
 ##          1048543523 1055476101 1057426990 1079309834 1105136505 1133191058
 ## x          0.000000 -0.2773714  80.253774  2.5022763  14.027943  101.50343
@@ -691,7 +691,7 @@ importance(rf2)
 ## month     1.1353541  18.686705             78.19218         1547.349
 ## year      1.3440623  25.841835             85.74285         1661.708
 ```
-</details>
+
 
 
 ```r
@@ -699,7 +699,7 @@ varImpPlot(rf2)
 ```
 ![Image](4.png)
 
-|   X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
+|       X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
 
 
 ```r
@@ -712,5 +712,5 @@ ggplot(test, aes(x, y )) +
 ```
 ![Image](5.png)
 
-|    The correct predictions are more clustered than the wrong predictions.
+|       The correct predictions are more clustered than the wrong predictions.
 
