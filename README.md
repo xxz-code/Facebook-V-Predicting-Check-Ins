@@ -1,3 +1,9 @@
+##### Table of Contents  
+[Headers](#headers)  
+[Emphasis](#emphasis)  
+...snip...    
+<a name="headers"/>
+## Headers
 
 ## Final Project: Comparing the KNN Model to Random Forest 
 
@@ -299,7 +305,7 @@ importance(rf2)
 <details>
 <summary>Result
 </summary>
-```
+
 $##          1048543523 1055476101 1057426990 1079309834 1105136505 1133191058
 ## x          0.000000 -0.2773714  80.253774  2.5022763  14.027943  101.50343
 ## y          0.000000  1.0010015 107.378273  4.1645311  23.166453  220.30036
