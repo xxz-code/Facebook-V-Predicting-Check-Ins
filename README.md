@@ -111,7 +111,7 @@ train %>% count(place_id) %>% filter(n > 500) -> ids
 trainz = train[train$place_id %in% ids$place_id,]
 ```
 
-| Although we have not touched upon it in class, the package plotly has simplified the creation of the 3-D graph. 
+|      Although we have not touched upon it in class, the package plotly has simplified the creation of the 3-D graph. 
 
 
 ```r
@@ -137,7 +137,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
 ```
 
 
-| One of the most significant advantages of this graph is the ability to explore it manually. Viewing it from the side, you can see the ebb and flows of the check-ins throughout the day. If you go to a bird's eye perspective, you can see something that looks similar to the previous graph. On the key to the right, you can select or deselect the various place_ids. It's worth noting that the hour axis goes through the entire 24 hour period of a day.
+|      One of the most significant advantages of this graph is the ability to explore it manually. Viewing it from the side, you can see the ebb and flows of the check-ins throughout the day. If you go to a bird's eye perspective, you can see something that looks similar to the previous graph. On the key to the right, you can select or deselect the various place_ids. It's worth noting that the hour axis goes through the entire 24 hour period of a day.
 
 |What if we want to look at the day of the week?
 
@@ -153,9 +153,9 @@ plot_ly(x = ~x , y = ~y, z = ~weekday, color = place_id,  type = "scatter3d", mo
 detach(trainz)
 ```
 
-| Visualizing check-ins by week doesn't yield as much of a result as the hourly view of check-ins. That being said, there is still some variation that is worth nothing. 
+|      Visualizing check-ins by week doesn't yield as much of a result as the hourly view of check-ins. That being said, there is still some variation that is worth nothing. 
 
-| Before the KNN models are used, the Notebook we analyzed noted that too many classes remained for something like a random forest to work effectively. 
+|      Before the KNN models are used, the Notebook we analyzed noted that too many classes remained for something like a random forest to work effectively. 
 
 
 ```r
