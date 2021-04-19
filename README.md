@@ -5,6 +5,7 @@
 3. [Another paragraph](#paragraph2)
 ## Final Project: Comparing the KNN Model to Random Forest 
 
+## Introduction
 |     This Kaggle competition, created by Facebook, featured roughly 30 million Facebook user "check-ins" over a 100-kilometer squared area - 10 km by 10 km grid. The size of the data-set alone generated difficulties and lead to intricacies within the problem. We had yet to work with a classification model this large; for example, there were 100 thousand possible classifications for place_id.   
 
 
