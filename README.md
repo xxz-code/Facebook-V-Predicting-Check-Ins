@@ -238,9 +238,7 @@ train$place_id <- as.factor(train$place_id)
 model_knn = knn(train = X, test = X_val, cl = train$place_id, k = 15)
 
 mean(test$place_id == model_knn)
-```
 
-```
 ## [1] 0.5311461
 
 |      Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
