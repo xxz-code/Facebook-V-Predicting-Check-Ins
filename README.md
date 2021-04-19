@@ -110,7 +110,7 @@ attach(trainz)
 plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode = "markers",
         marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
 ```
-
+![Image of plot](https://github.com/xxz-code/Team-13-Machine-Learning-Presentation-/blob/main/1.1.png)
 ```
 ## Warning: `arrange_()` was deprecated in dplyr 0.7.0.
 ## Please use `arrange()` instead.
