@@ -179,7 +179,7 @@ length(unique(train$place_id))
 |       After 278 remaining classes and 17062 observations, we can finally begin the machine learning portion of the project. 
 
 ## K Knearest Neighbor: 
-KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
+|       KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
 
 ```r
 train$place_id <- as.factor(train$place_id)
@@ -193,7 +193,7 @@ mean(knnpred==test$place_id)
 ```
 ## [1] 0.4047883
 ```
-The accuracy rate is 0.4054533 which is not ideal. We'll try the scaling the variables using Alexandru Papiu's method.
+|       The accuracy rate is 0.4054533 which is not ideal. We'll try the scaling the variables using Alexandru Papiu's method.
 
 
 ```r
@@ -222,10 +222,10 @@ mean(test$place_id == model_knn)
 ```
 ## [1] 0.5311461
 ```
-Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
+|       Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
 
 ## Random Forest
-We first examine Alexandru's random forest. (The accuracy rate from his data sampling was 0.5485545)
+|       We first examine Alexandru's random forest. (The accuracy rate from his data sampling was 0.5485545)
 
 ```r
 set.seed(2021)
@@ -252,7 +252,7 @@ pred = pred$predictions
 ## [1] 0.577699
 ```
 
-His accuracy rate is 0.577699. We want to examine what is the best number of mtry so we are going to do an experiment.
+|       His accuracy rate is 0.577699. We want to examine what is the best number of mtry so we are going to do an experiment.
 
 
 ```r
@@ -678,7 +678,7 @@ varImpPlot(rf2)
 ```
 ![Image](4.png)
 
-X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
+|       X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
 
 
 ```r
