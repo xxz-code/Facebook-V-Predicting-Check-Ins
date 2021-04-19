@@ -198,10 +198,10 @@ length(unique(train$place_id))
 ## [1] 278
 ```
 |       After 278 remaining classes and 17062 observations, we can finally begin the machine learning portion of the project. 
-```
+
 ## K Nearest Neighbor: 
 |       KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
-```
+
 ```r
 train$place_id <- as.factor(train$place_id)
 knnfit<-train(place_id~., data=train, method='knn', preProcess=c("center", "scale"))
