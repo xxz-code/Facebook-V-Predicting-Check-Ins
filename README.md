@@ -243,11 +243,11 @@ mean(test$place_id == model_knn)
 ```
 ## [1] 0.5311461
 ```
-|       Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
+|      Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
 
 ## Random Forest
 |       We first examine Alexandru's random forest. (The accuracy rate from his data sampling was 0.5485545)
-
+```
 ```r
 set.seed(2021)
 model_rf <- ranger(place_id ~ x + y + accuracy + hour + weekday + month + year,
