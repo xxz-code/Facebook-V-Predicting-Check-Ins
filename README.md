@@ -1,4 +1,5 @@
 ## Final Project: Comparing the KNN Model to Random Forest
+
 ## Table of contents
 1. [Introduction](#introduction)
 2. [Loading Libraries](#paragraph1)
