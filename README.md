@@ -100,7 +100,7 @@ train %>% count(place_id) %>% filter(n > 500) -> ids
 trainz = train[train$place_id %in% ids$place_id,]
 ```
 
-|       Although we have not touched upon it in class, the package plotly has simplified the creation of the 3-D graph. 
+| Although we have not touched upon it in class, the package plotly has simplified the creation of the 3-D graph. 
 
 
 ```r
@@ -117,7 +117,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
 ```
 
 
-|       One of the most significant advantages of this graph is the ability to explore it manually. Viewing it from the side, you can see the ebb and flows of the check-ins throughout the day. If you go to a bird's eye perspective, you can see something that looks similar to the previous graph. On the key to the right, you can select or deselect the various place_ids. It's worth noting that the hour axis goes through the entire 24 hour period of a day.
+| One of the most significant advantages of this graph is the ability to explore it manually. Viewing it from the side, you can see the ebb and flows of the check-ins throughout the day. If you go to a bird's eye perspective, you can see something that looks similar to the previous graph. On the key to the right, you can select or deselect the various place_ids. It's worth noting that the hour axis goes through the entire 24 hour period of a day.
 
 |What if we want to look at the day of the week?
 
@@ -144,7 +144,7 @@ length(unique(trainz$place_id))
 ```
 ## [1] 7
 ```
-|   There are 982 classes for place_id, 770 classes that the Notebook had at this point, even with the heavily shrunk data. To combat this, the Notebook removed any place that didn't have fewer than three occurrences. This decision to do so seems reasonable as places with three or fewer check-ins serve little benefit in assisting with analysis. 
+| There are 982 classes for place_id, 770 classes that the Notebook had at this point, even with the heavily shrunk data. To combat this, the Notebook removed any place that didn't have fewer than three occurrences. This decision to do so seems reasonable as places with three or fewer check-ins serve little benefit in assisting with analysis. 
 
 
 ```r
