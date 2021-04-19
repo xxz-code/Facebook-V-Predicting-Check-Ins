@@ -247,7 +247,7 @@ mean(test$place_id == model_knn)
 
 ## Random Forest
 |       We first examine Alexandru's random forest. (The accuracy rate from his data sampling was 0.5485545)
-```
+
 ```r
 set.seed(2021)
 model_rf <- ranger(place_id ~ x + y + accuracy + hour + weekday + month + year,
