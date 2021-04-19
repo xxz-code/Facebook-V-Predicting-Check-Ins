@@ -89,7 +89,7 @@ test <- fb[-train.indices]
 ## Vizualizing the Training Set:
 
 
-|Now we look at the data through ggplot and plot_ly
+|       Now we look at the data through ggplot and plot_ly
 
 
 ```r
@@ -299,7 +299,7 @@ for(i in 1:7){
 ## mtry= 7[1] 0.5581911
 ```
 
-| mtry = 2 produced the best accuracy 0.5819109, which would put us at 399th on the leaderboard, although we are only sampling a very small portion of the actual training set.
+|       mtry = 2 produced the best accuracy 0.5819109, which would put us at 399th on the leaderboard, although we are only sampling a very small portion of the actual training set.
 
 
 ```r
