@@ -1,4 +1,5 @@
-Team 13 :detective::man_in_tuxedo::man_scientist::man_technologist:
+Team 13 
+:detective: :man_in_tuxedo: :man_scientist: :man_technologist:
 
 4/19/2021
 
