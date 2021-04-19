@@ -1,14 +1,3 @@
----
-title: "Facebook V: Predicting Check-Ins"
-author: "Team 13"
-output:
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
-    keep_md: true
----
-
-
 
 ## Final Project: Comparing the KNN Model to Random Forest 
 
