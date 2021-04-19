@@ -1,8 +1,11 @@
+
 # Table of contents
 1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
+2. [Loading Libraries]
+3. [Data Loading and Cleaningt]
+4. [Vizualizing the Training Set](#paragraph1)
+5. [K Nearest Neighbor]
+6. [Random Forest](#paragraph2)
 ## Final Project: Comparing the KNN Model to Random Forest 
 
 ## Introduction
@@ -194,7 +197,7 @@ length(unique(train$place_id))
 ```
 |       After 278 remaining classes and 17062 observations, we can finally begin the machine learning portion of the project. 
 
-## K Knearest Neighbor: 
+## K Nearest Neighbor: 
 |       KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
 
 ```r
