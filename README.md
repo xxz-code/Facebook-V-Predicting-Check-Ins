@@ -13,6 +13,7 @@
 
 |     Now that there was a brief description of both the background of the data and the data-set itself, the data importing and cleaning process can begin.   
 
+## Loading Libraries:
 
 ```r
 library(data.table) #reading in the data
@@ -28,7 +29,7 @@ library(gbm)
 library(caret)
 ```
 
-## Loading and Cleaning:
+## Loading and Cleaning Data:
 
 ```r
 set.seed(2021)
