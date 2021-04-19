@@ -2,7 +2,7 @@
 
 ## Table of contents
 1. [Introduction](#introduction)
-2. [Loading Libraries](#paragraph1)
+2. [Loading Packages](#paragraph1)
 3. [Loading and Cleaning Data](#paragraph2)
 4. [Vizualizing the Training Set](#paragraph3)
 5. [K Nearest Neighbor](#paragraph4)
@@ -19,7 +19,7 @@
 
 |     Now that there was a brief description of both the background of the data and the data-set itself, the data importing and cleaning process can begin.   
 
-## Loading Libraries:
+## Loading packages:
 
 ```r
 library(data.table) #reading in the data
@@ -198,10 +198,10 @@ length(unique(train$place_id))
 ## [1] 278
 ```
 |       After 278 remaining classes and 17062 observations, we can finally begin the machine learning portion of the project. 
-
+```
 ## K Nearest Neighbor: 
 |       KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
-
+```
 ```r
 train$place_id <- as.factor(train$place_id)
 knnfit<-train(place_id~., data=train, method='knn', preProcess=c("center", "scale"))
