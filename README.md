@@ -165,7 +165,7 @@ length(unique(trainz$place_id))
 ```
 ## [1] 7
 ```
-| There are 982 classes for place_id, 770 classes that the Notebook had at this point, even with the heavily shrunk data. To combat this, the Notebook removed any place that didn't have fewer than three occurrences. This decision to do so seems reasonable as places with three or fewer check-ins serve little benefit in assisting with analysis. 
+|     There are 982 classes for place_id, 770 classes that the Notebook had at this point, even with the heavily shrunk data. To combat this, the Notebook removed any place that didn't have fewer than three occurrences. This decision to do so seems reasonable as places with three or fewer check-ins serve little benefit in assisting with analysis. 
 
 
 ```r
