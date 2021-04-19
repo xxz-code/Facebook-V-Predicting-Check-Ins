@@ -110,6 +110,7 @@ plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode
         marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
 ```
 ![Image](newplot(1).png)
+
 ```
 ## Warning: `arrange_()` was deprecated in dplyr 0.7.0.
 ## Please use `arrange()` instead.
@@ -128,13 +129,14 @@ plot_ly(x = ~x , y = ~y, z = ~weekday, color = place_id,  type = "scatter3d", mo
 ```
 ![Image](newplot(3).png)
 
+
 ```r
 detach(trainz)
 ```
 
-|       Visualizing check-ins by week doesn't yield as much of a result as the hourly view of check-ins. That being said, there is still some variation that is worth nothing. 
+| Visualizing check-ins by week doesn't yield as much of a result as the hourly view of check-ins. That being said, there is still some variation that is worth nothing. 
 
-|       Before the KNN models are used, the Notebook we analyzed noted that too many classes remained for something like a random forest to work effectively. 
+| Before the KNN models are used, the Notebook we analyzed noted that too many classes remained for something like a random forest to work effectively. 
 
 
 ```r
