@@ -1,4 +1,4 @@
-## Final Project: Comparing the KNN Model to Random Forest
+# Facebook V: Predicting Check Ins
 
 ## Table of contents
 1. [Introduction](#introduction)
