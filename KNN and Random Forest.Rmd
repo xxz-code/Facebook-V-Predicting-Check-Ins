@@ -1,0 +1,232 @@
+---
+title: "Facebook V: Predicting Check-Ins"
+author: "Team 13"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Final Project: Comparing the KNN Model to Random Forest 
+
+|     This Kaggle competition, created by Facebook, featured roughly 30 million Facebook user "check-ins" over a 100-kilometer squared area - 10 km by 10 km grid. The size of the data-set alone generated difficulties and lead to intricacies within the problem. We had yet to work with a classification model this large; for example, there were 100 thousand possible classifications for place_id.   
+
+
+|      Continuing off of the place_id mention, this data-set is not easily interpretable, so it is worth elaborating on each of the six original variables. Place_id, as previously mentioned, is one of the 100,000 places someone could check in to in this ten by ten kilometer grid. Next is row_id is straightforward, the id for the number of rows within our data frame. Variables X and Y are coordinate positions that are between the values of 0 and 10. There are two final variables, accuracy and time, and both have been left intentionally vague. Accuracy is a series of values that range from 1 to 1,000.  
+
+
+|     Now that there was a brief description of both the background of the data and the data-set itself, the data importing and cleaning process can begin.   
+
+```{r message=FALSE}
+library(data.table) #reading in the data
+library(dplyr) #dataframe manipulation
+library(ggplot2) #viz
+library(ranger) #the random forest implementation
+library(plotly) #3D plotting
+library(tidyr) #dataframe manipulation
+library(FNN) #k nearest neighbors algorithm
+library(xgboost)
+library(randomForest)
+library(gbm)
+library(caret)
+```
+
+## Loading and Cleaning:
+``` {r}
+set.seed(2021)
+fb <- fread(file = 'train.csv', integer64 = "character", showProgress = TRUE)
+```
+
+|       After importing the train data, the Kaggle notebook Team 13 analyzed decided to make a lazy data frame using the filter function in dplyr. The result is a more approachable data set with a .25 by .25 kilometer grid of the city. We opted to use a runif() instead of the Notebook's approach because the original, commented out, process lacked randomness and purely selected a grid based off of location in the city. Using a runif() we still generate a 250 by 250 meter area but can now justify it's dimensions for reasons other than just the Notebook selected them. 
+```{r}
+#fb <-fb %>% filter(x >1, x <1.25, y >2.5, y < 2.75)
+#head(fb)
+
+xseed <-runif(1,0,10)
+yseed <- runif(1,0,10)
+fb %>% filter(x >xseed, x <xseed+0.25, y >yseed, y < yseed+0.25) -> fb
+head(fb, 3)
+
+```
+
+|       The time variable was left vague, but the consensus within the Kaggle notebooks is the unit of time here is minutes. Time in minutes is now broken down into digestible metrics that coincide with business operating schedules. Minutes were translated to new variables: hour, weekday, month, year, and day. 
+
+```{r}
+fb$hour = (fb$time/60) %% 24
+fb$weekday = (fb$time/(60*24)) %% 7
+fb$month = (fb$time/(60*24*30)) %% 12 #month-ish
+fb$year = fb$time/(60*24*365)
+fb$day = fb$time/(60*24) %% 365
+```
+
+
+|       The final part of the cleaning and loading process is creating a train and validation set. The Kaggle Notebook that we are critiquing uses time as a method of splitting the data; Simultaneously, this validation structure is similar to how Kaggle initially split between a test and a train data-set, it is argued that this leaves the data exposed to seasonality bias. As a team, we thought the idea of creating a training set and a validation set off of time could lead to errors with seasonality so we decided to train the data using in the in class method of sample().
+|       We decided to opt for a couple different methods of loading and cleaning the data that we believe have more efficacy. We will later compare our modeling results to that of the Notebooks as a check. 
+```{r}
+#small_train = fb[fb$time < 7.3e5,]
+#small_val = fb[fb$time >= 7.3e5,]
+
+
+train.indices <- sample(nrow(fb), nrow(fb) * .8)
+train <- fb[train.indices]
+test <- fb[-train.indices]
+
+```
+
+## Vizualizing the Training Set:
+
+
+|Now we look at the data through ggplot and plot_ly
+
+```{r}
+ggplot(train, aes(x, y )) +
+  geom_point(aes(color = place_id)) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ggtitle("Check-ins colored by place_id")
+```
+
+|       At first glance, the clusters are very apparent. Even with this Kaggle Notebook's unorthodox approach to dividing and creating a training set, there are still many noticeable regions for place_id.
+|       The plot is a bit muddled, so the additional element of time is added in the following chart to avoid overlap. 
+
+|       Trainz is created to show place_id check ins that appear 500 times. This is for the sake of readability because there are so many data points and adding a third dimension is unhelpful to visualize every place_id with a 3-D chart. 
+```{r}
+train %>% count(place_id) %>% filter(n > 500) -> ids
+trainz = train[train$place_id %in% ids$place_id,]
+```
+
+|       Although we have not touched upon it in class, the package plotly has simplified the creation of the 3-D graph. 
+
+```{r}
+attach(trainz)
+
+plot_ly(x = ~x , y = ~y, z = ~hour, color = ~place_id,  type = "scatter3d", mode = "markers",
+        marker=list(size= 5)) %>% layout(title = "Place_id's by position and Time of Day")
+```
+
+|       One of the most significant advantages of this graph is the ability to explore it manually. Viewing it from the side, you can see the ebb and flows of the check-ins throughout the day. If you go to a bird's eye perspective, you can see something that looks similar to the previous graph. On the key to the right, you can select or deselect the various place_ids. It's worth noting that the hour axis goes through the entire 24 hour period of a day.
+
+|What if we want to look at the day of the week?
+
+```{r}
+plot_ly(x = ~x , y = ~y, z = ~weekday, color = place_id,  type = "scatter3d", mode = "markers", 
+        marker=list(size = 5)) %>% layout(title = "Place_id's by position and Day of Week")
+detach(trainz)
+```
+
+|       Visualizing check-ins by week doesn't yield as much of a result as the hourly view of check-ins. That being said, there is still some variation that is worth nothing. 
+
+|       Before the KNN models are used, the Notebook we analyzed noted that too many classes remained for something like a random forest to work effectively. 
+
+```{r}
+
+length(unique(trainz$place_id))
+```
+|   There are 982 classes for place_id, 770 classes that the Notebook had at this point, even with the heavily shrunk data. To combat this, the Notebook removed any place that didn't have fewer than three occurrences. This decision to do so seems reasonable as places with three or fewer check-ins serve little benefit in assisting with analysis. 
+
+```{r}
+train %>% count(place_id) %>% filter(n > 3) -> ids
+train = train[train$place_id %in% ids$place_id,]
+str(train)
+length(unique(train$place_id))
+```
+|       After 278 remaining classes and 17062 observations, we can finally begin the machine learning portion of the project. 
+
+## K Knearest Neighbor: 
+KNN is one of the most used method in the leading submissions, we first run a knn model using method from ML I
+```{r}
+train$place_id <- as.factor(train$place_id)
+knnfit<-train(place_id~., data=train, method='knn', preProcess=c("center", "scale"))
+
+knnpred <- predict(knnfit, newdata=test)
+mean(knnpred==test$place_id)
+```
+The accuracy rate is 0.4054533 which is not ideal. We'll try the scaling the variables using Alexandru Papiu's method.
+
+```{r}
+
+s = 2
+l = 125
+w = 500
+
+create_matrix = function(train) {
+  cbind(s*train$y,
+        train$x,
+        train$hour/l,
+        train$weekday/w,
+        train$year/w,
+        train$month/w,
+        train$time/(w*60*24*7))
+}
+
+X = create_matrix(train)
+X_val = create_matrix(test)
+train$place_id <- as.factor(train$place_id)
+model_knn = knn(train = X, test = X_val, cl = train$place_id, k = 15)
+
+mean(test$place_id == model_knn)
+
+```
+Our accuracy rate is 0.5311461 which is higher than the accuracy rate generated from Alexandru's data sampling method.
+
+## Random Forest
+We first examine Alexandru's random forest. (The accuracy rate from his data sampling was 0.5485545)
+```{r}
+set.seed(2021)
+model_rf <- ranger(place_id ~ x + y + accuracy + hour + weekday + month + year,
+                   train,
+                   num.trees = 100,
+                   write.forest = TRUE,
+                   importance = "impurity")
+
+
+pred = predict(model_rf, test)
+pred = pred$predictions
+(accuracy = mean(pred == test$place_id))
+```
+
+We want to examine what is the best number of mtry so we are going to do an experiment.
+```{r}
+for(i in 1:7){
+  fit =   fit = randomForest(place_id~x + y + accuracy + hour + weekday + month + year, 
+               train, 
+               num.trees = 100,
+               mtry = i, 
+               importance = TRUE)
+  pred2 = predict(fit, test)
+  cat('mtry=', i )
+  print(mean(pred2 == test$place_id))
+}
+
+```
+
+mtry = 2 produced the best accuracy 0.5819109, which would put us at 399th on the leaderboard, although we are only sampling a very small portion of the actual training set.
+
+```{r}
+rf2 <- randomForest(place_id~x + y + accuracy + hour + weekday + month + year, 
+               train, 
+               num.trees = 100,
+               mtry = 2, 
+               importance = TRUE)
+importance(rf2)
+varImpPlot(rf2)
+```
+
+X and Y coordinates are the most important variables. The 'accuracy' variable is among the least important.
+
+```{r}
+test$Correct = (pred == test$place_id)
+
+ggplot(test, aes(x, y )) +
+    geom_point(aes(color = Correct)) + 
+    theme_minimal() +
+    scale_color_brewer(palette = "Set1")
+
+```
+The correct predictions are more clustered than the wrong predictions.
+
