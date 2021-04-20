@@ -162,7 +162,7 @@ detach(trainz)
 
 
 ```r
-length(unique(trainz$place_id))
+length(unique(train$place_id))
 ```
 
 ```
